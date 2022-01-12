@@ -1,7 +1,25 @@
-syntax = "proto3";
+syntax = "proto2";
+
+package com.yourgamecompany
+
 
 message SearchRequest {
-  string query = 1;
-  int32 page_number = 2;
-  int32 result_per_page = 3;
+  required string query = 1;
+  optional int32 page_number = 2;
+  optional int32 result_per_page = 3;
 }
+
+message VideoGameCollection {
+  required string name = 1;
+  optional GameType gameType = 2;
+  required string purchaseDate = 3;
+  optional string gameHistory = 4;
+  optional string
+
+  enum GameType =  {
+    GENERIC = 1,
+    SPORTS = 2,
+    ADVENTURE = 3
+  }
+}
+

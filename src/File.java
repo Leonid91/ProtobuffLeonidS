@@ -17,22 +17,34 @@ public final class File {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string query = 1;</code>
+     * <code>required string query = 1;</code>
+     */
+    boolean hasQuery();
+    /**
+     * <code>required string query = 1;</code>
      */
     java.lang.String getQuery();
     /**
-     * <code>string query = 1;</code>
+     * <code>required string query = 1;</code>
      */
     com.google.protobuf.ByteString
         getQueryBytes();
 
     /**
-     * <code>int32 page_number = 2;</code>
+     * <code>optional int32 page_number = 2;</code>
+     */
+    boolean hasPageNumber();
+    /**
+     * <code>optional int32 page_number = 2;</code>
      */
     int getPageNumber();
 
     /**
-     * <code>int32 result_per_page = 3;</code>
+     * <code>optional int32 result_per_page = 3;</code>
+     */
+    boolean hasResultPerPage();
+    /**
+     * <code>optional int32 result_per_page = 3;</code>
      */
     int getResultPerPage();
   }
@@ -79,23 +91,23 @@ public final class File {
               done = true;
               break;
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              query_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              query_ = bs;
               break;
             }
             case 16: {
-
+              bitField0_ |= 0x00000002;
               pageNumber_ = input.readInt32();
               break;
             }
             case 24: {
-
+              bitField0_ |= 0x00000004;
               resultPerPage_ = input.readInt32();
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -126,10 +138,17 @@ public final class File {
               File.SearchRequest.class, File.SearchRequest.Builder.class);
     }
 
+    private int bitField0_;
     public static final int QUERY_FIELD_NUMBER = 1;
     private volatile java.lang.Object query_;
     /**
-     * <code>string query = 1;</code>
+     * <code>required string query = 1;</code>
+     */
+    public boolean hasQuery() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string query = 1;</code>
      */
     public java.lang.String getQuery() {
       java.lang.Object ref = query_;
@@ -139,12 +158,14 @@ public final class File {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        query_ = s;
+        if (bs.isValidUtf8()) {
+          query_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string query = 1;</code>
+     * <code>required string query = 1;</code>
      */
     public com.google.protobuf.ByteString
         getQueryBytes() {
@@ -163,7 +184,13 @@ public final class File {
     public static final int PAGE_NUMBER_FIELD_NUMBER = 2;
     private int pageNumber_;
     /**
-     * <code>int32 page_number = 2;</code>
+     * <code>optional int32 page_number = 2;</code>
+     */
+    public boolean hasPageNumber() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 page_number = 2;</code>
      */
     public int getPageNumber() {
       return pageNumber_;
@@ -172,7 +199,13 @@ public final class File {
     public static final int RESULT_PER_PAGE_FIELD_NUMBER = 3;
     private int resultPerPage_;
     /**
-     * <code>int32 result_per_page = 3;</code>
+     * <code>optional int32 result_per_page = 3;</code>
+     */
+    public boolean hasResultPerPage() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 result_per_page = 3;</code>
      */
     public int getResultPerPage() {
       return resultPerPage_;
@@ -185,6 +218,10 @@ public final class File {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasQuery()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -192,13 +229,13 @@ public final class File {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getQueryBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, query_);
       }
-      if (pageNumber_ != 0) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, pageNumber_);
       }
-      if (resultPerPage_ != 0) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, resultPerPage_);
       }
       unknownFields.writeTo(output);
@@ -210,14 +247,14 @@ public final class File {
       if (size != -1) return size;
 
       size = 0;
-      if (!getQueryBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, query_);
       }
-      if (pageNumber_ != 0) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, pageNumber_);
       }
-      if (resultPerPage_ != 0) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, resultPerPage_);
       }
@@ -237,12 +274,21 @@ public final class File {
       File.SearchRequest other = (File.SearchRequest) obj;
 
       boolean result = true;
-      result = result && getQuery()
-          .equals(other.getQuery());
-      result = result && (getPageNumber()
-          == other.getPageNumber());
-      result = result && (getResultPerPage()
-          == other.getResultPerPage());
+      result = result && (hasQuery() == other.hasQuery());
+      if (hasQuery()) {
+        result = result && getQuery()
+            .equals(other.getQuery());
+      }
+      result = result && (hasPageNumber() == other.hasPageNumber());
+      if (hasPageNumber()) {
+        result = result && (getPageNumber()
+            == other.getPageNumber());
+      }
+      result = result && (hasResultPerPage() == other.hasResultPerPage());
+      if (hasResultPerPage()) {
+        result = result && (getResultPerPage()
+            == other.getResultPerPage());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -254,12 +300,18 @@ public final class File {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + QUERY_FIELD_NUMBER;
-      hash = (53 * hash) + getQuery().hashCode();
-      hash = (37 * hash) + PAGE_NUMBER_FIELD_NUMBER;
-      hash = (53 * hash) + getPageNumber();
-      hash = (37 * hash) + RESULT_PER_PAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getResultPerPage();
+      if (hasQuery()) {
+        hash = (37 * hash) + QUERY_FIELD_NUMBER;
+        hash = (53 * hash) + getQuery().hashCode();
+      }
+      if (hasPageNumber()) {
+        hash = (37 * hash) + PAGE_NUMBER_FIELD_NUMBER;
+        hash = (53 * hash) + getPageNumber();
+      }
+      if (hasResultPerPage()) {
+        hash = (37 * hash) + RESULT_PER_PAGE_FIELD_NUMBER;
+        hash = (53 * hash) + getResultPerPage();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -394,11 +446,11 @@ public final class File {
       public Builder clear() {
         super.clear();
         query_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         pageNumber_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         resultPerPage_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -425,9 +477,21 @@ public final class File {
       @java.lang.Override
       public File.SearchRequest buildPartial() {
         File.SearchRequest result = new File.SearchRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.query_ = query_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.pageNumber_ = pageNumber_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.resultPerPage_ = resultPerPage_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -476,14 +540,15 @@ public final class File {
 
       public Builder mergeFrom(File.SearchRequest other) {
         if (other == File.SearchRequest.getDefaultInstance()) return this;
-        if (!other.getQuery().isEmpty()) {
+        if (other.hasQuery()) {
+          bitField0_ |= 0x00000001;
           query_ = other.query_;
           onChanged();
         }
-        if (other.getPageNumber() != 0) {
+        if (other.hasPageNumber()) {
           setPageNumber(other.getPageNumber());
         }
-        if (other.getResultPerPage() != 0) {
+        if (other.hasResultPerPage()) {
           setResultPerPage(other.getResultPerPage());
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -493,6 +558,9 @@ public final class File {
 
       @java.lang.Override
       public final boolean isInitialized() {
+        if (!hasQuery()) {
+          return false;
+        }
         return true;
       }
 
@@ -514,10 +582,17 @@ public final class File {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object query_ = "";
       /**
-       * <code>string query = 1;</code>
+       * <code>required string query = 1;</code>
+       */
+      public boolean hasQuery() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string query = 1;</code>
        */
       public java.lang.String getQuery() {
         java.lang.Object ref = query_;
@@ -525,14 +600,16 @@ public final class File {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          query_ = s;
+          if (bs.isValidUtf8()) {
+            query_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string query = 1;</code>
+       * <code>required string query = 1;</code>
        */
       public com.google.protobuf.ByteString
           getQueryBytes() {
@@ -548,37 +625,36 @@ public final class File {
         }
       }
       /**
-       * <code>string query = 1;</code>
+       * <code>required string query = 1;</code>
        */
       public Builder setQuery(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         query_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string query = 1;</code>
+       * <code>required string query = 1;</code>
        */
       public Builder clearQuery() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         query_ = getDefaultInstance().getQuery();
         onChanged();
         return this;
       }
       /**
-       * <code>string query = 1;</code>
+       * <code>required string query = 1;</code>
        */
       public Builder setQueryBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         query_ = value;
         onChanged();
         return this;
@@ -586,25 +662,31 @@ public final class File {
 
       private int pageNumber_ ;
       /**
-       * <code>int32 page_number = 2;</code>
+       * <code>optional int32 page_number = 2;</code>
+       */
+      public boolean hasPageNumber() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 page_number = 2;</code>
        */
       public int getPageNumber() {
         return pageNumber_;
       }
       /**
-       * <code>int32 page_number = 2;</code>
+       * <code>optional int32 page_number = 2;</code>
        */
       public Builder setPageNumber(int value) {
-        
+        bitField0_ |= 0x00000002;
         pageNumber_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 page_number = 2;</code>
+       * <code>optional int32 page_number = 2;</code>
        */
       public Builder clearPageNumber() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         pageNumber_ = 0;
         onChanged();
         return this;
@@ -612,25 +694,31 @@ public final class File {
 
       private int resultPerPage_ ;
       /**
-       * <code>int32 result_per_page = 3;</code>
+       * <code>optional int32 result_per_page = 3;</code>
+       */
+      public boolean hasResultPerPage() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 result_per_page = 3;</code>
        */
       public int getResultPerPage() {
         return resultPerPage_;
       }
       /**
-       * <code>int32 result_per_page = 3;</code>
+       * <code>optional int32 result_per_page = 3;</code>
        */
       public Builder setResultPerPage(int value) {
-        
+        bitField0_ |= 0x00000004;
         resultPerPage_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 result_per_page = 3;</code>
+       * <code>optional int32 result_per_page = 3;</code>
        */
       public Builder clearResultPerPage() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         resultPerPage_ = 0;
         onChanged();
         return this;
@@ -638,7 +726,7 @@ public final class File {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -661,7 +749,7 @@ public final class File {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SearchRequest>
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<SearchRequest>
         PARSER = new com.google.protobuf.AbstractParser<SearchRequest>() {
       @java.lang.Override
       public SearchRequest parsePartialFrom(
@@ -703,8 +791,8 @@ public final class File {
   static {
     java.lang.String[] descriptorData = {
       "\n\nfile.proto\"L\n\rSearchRequest\022\r\n\005query\030\001" +
-      " \001(\t\022\023\n\013page_number\030\002 \001(\005\022\027\n\017result_per_" +
-      "page\030\003 \001(\005b\006proto3"
+      " \002(\t\022\023\n\013page_number\030\002 \001(\005\022\027\n\017result_per_" +
+      "page\030\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
