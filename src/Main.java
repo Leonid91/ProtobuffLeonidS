@@ -1,3 +1,6 @@
+import com.yourgamecompany.*;
+import com.google.protobuf.*;
+
 public class Main
 {
     public static void main(String[] args) {

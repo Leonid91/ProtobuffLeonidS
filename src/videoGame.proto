@@ -1,0 +1,31 @@
+syntax = "proto2";
+
+package com.yourgamecompany;
+
+option java_package = "com.yourgamecompany";
+option java_outer_classname = "VideoGameCompany";
+
+import "util.proto";
+
+message VideoGameMatch {
+  repeated VideoGame videoGameMatchList = 1;
+}
+
+message VideoGame {
+  required string name = 1;
+  optional EnumGameType gameType = 2;
+  required SimpleDate purchaseDate = 3;
+  repeated History gameHistory = 4;
+
+  enum EnumGameType {
+    GENERIC = 1;
+    SPORTS = 2;
+    ADVENTURE = 3;
+  }
+
+  message History {
+    required string gameDate = 1;
+    optional Time gameDuration = 2;
+  }
+}
+
