@@ -888,6 +888,17 @@ public final class VideoGameCompany {
      */
     com.yourgamecompany.VideoGameCompany.VideoGame.HistoryOrBuilder getGameHistoryOrBuilder(
         int index);
+
+    /**
+     * <code>optional bool isFavorite = 5;</code>
+     * @return Whether the isFavorite field is set.
+     */
+    boolean hasIsFavorite();
+    /**
+     * <code>optional bool isFavorite = 5;</code>
+     * @return The isFavorite.
+     */
+    boolean getIsFavorite();
   }
   /**
    * Protobuf type {@code com.yourgamecompany.VideoGame}
@@ -976,6 +987,11 @@ public final class VideoGameCompany {
               }
               gameHistory_.add(
                   input.readMessage(com.yourgamecompany.VideoGameCompany.VideoGame.History.PARSER, extensionRegistry));
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000008;
+              isFavorite_ = input.readBool();
               break;
             }
             default: {
@@ -2084,6 +2100,25 @@ public final class VideoGameCompany {
       return gameHistory_.get(index);
     }
 
+    public static final int ISFAVORITE_FIELD_NUMBER = 5;
+    private boolean isFavorite_;
+    /**
+     * <code>optional bool isFavorite = 5;</code>
+     * @return Whether the isFavorite field is set.
+     */
+    @java.lang.Override
+    public boolean hasIsFavorite() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional bool isFavorite = 5;</code>
+     * @return The isFavorite.
+     */
+    @java.lang.Override
+    public boolean getIsFavorite() {
+      return isFavorite_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2128,6 +2163,9 @@ public final class VideoGameCompany {
       for (int i = 0; i < gameHistory_.size(); i++) {
         output.writeMessage(4, gameHistory_.get(i));
       }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeBool(5, isFavorite_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -2151,6 +2189,10 @@ public final class VideoGameCompany {
       for (int i = 0; i < gameHistory_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, gameHistory_.get(i));
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, isFavorite_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2183,6 +2225,11 @@ public final class VideoGameCompany {
       }
       if (!getGameHistoryList()
           .equals(other.getGameHistoryList())) return false;
+      if (hasIsFavorite() != other.hasIsFavorite()) return false;
+      if (hasIsFavorite()) {
+        if (getIsFavorite()
+            != other.getIsFavorite()) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2209,6 +2256,11 @@ public final class VideoGameCompany {
       if (getGameHistoryCount() > 0) {
         hash = (37 * hash) + GAMEHISTORY_FIELD_NUMBER;
         hash = (53 * hash) + getGameHistoryList().hashCode();
+      }
+      if (hasIsFavorite()) {
+        hash = (37 * hash) + ISFAVORITE_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getIsFavorite());
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2361,6 +2413,8 @@ public final class VideoGameCompany {
         } else {
           gameHistoryBuilder_.clear();
         }
+        isFavorite_ = false;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -2413,6 +2467,10 @@ public final class VideoGameCompany {
           result.gameHistory_ = gameHistory_;
         } else {
           result.gameHistory_ = gameHistoryBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.isFavorite_ = isFavorite_;
+          to_bitField0_ |= 0x00000008;
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -2499,6 +2557,9 @@ public final class VideoGameCompany {
               gameHistoryBuilder_.addAllMessages(other.gameHistory_);
             }
           }
+        }
+        if (other.hasIsFavorite()) {
+          setIsFavorite(other.getIsFavorite());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3030,6 +3091,45 @@ public final class VideoGameCompany {
         }
         return gameHistoryBuilder_;
       }
+
+      private boolean isFavorite_ ;
+      /**
+       * <code>optional bool isFavorite = 5;</code>
+       * @return Whether the isFavorite field is set.
+       */
+      @java.lang.Override
+      public boolean hasIsFavorite() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>optional bool isFavorite = 5;</code>
+       * @return The isFavorite.
+       */
+      @java.lang.Override
+      public boolean getIsFavorite() {
+        return isFavorite_;
+      }
+      /**
+       * <code>optional bool isFavorite = 5;</code>
+       * @param value The isFavorite to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsFavorite(boolean value) {
+        bitField0_ |= 0x00000010;
+        isFavorite_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool isFavorite = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsFavorite() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        isFavorite_ = false;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3110,16 +3210,17 @@ public final class VideoGameCompany {
       "\n\017videoGame.proto\022\023com.yourgamecompany\032\n" +
       "util.proto\"L\n\016VideoGameMatch\022:\n\022videoGam" +
       "eMatchList\030\001 \003(\0132\036.com.yourgamecompany.V" +
-      "ideoGame\"\322\002\n\tVideoGame\022\014\n\004name\030\001 \002(\t\022=\n\010" +
+      "ideoGame\"\346\002\n\tVideoGame\022\014\n\004name\030\001 \002(\t\022=\n\010" +
       "gameType\030\002 \001(\0162+.com.yourgamecompany.Vid" +
       "eoGame.EnumGameType\0225\n\014purchaseDate\030\003 \002(" +
       "\0132\037.com.yourgamecompany.SimpleDate\022;\n\013ga" +
       "meHistory\030\004 \003(\0132&.com.yourgamecompany.Vi" +
-      "deoGame.History\032L\n\007History\022\020\n\010gameDate\030\001" +
-      " \002(\t\022/\n\014gameDuration\030\002 \001(\0132\031.com.yourgam" +
-      "ecompany.Time\"6\n\014EnumGameType\022\013\n\007GENERIC" +
-      "\020\001\022\n\n\006SPORTS\020\002\022\r\n\tADVENTURE\020\003B\'\n\023com.you" +
-      "rgamecompanyB\020VideoGameCompany"
+      "deoGame.History\022\022\n\nisFavorite\030\005 \001(\010\032L\n\007H" +
+      "istory\022\020\n\010gameDate\030\001 \002(\t\022/\n\014gameDuration" +
+      "\030\002 \001(\0132\031.com.yourgamecompany.Time\"6\n\014Enu" +
+      "mGameType\022\013\n\007GENERIC\020\001\022\n\n\006SPORTS\020\002\022\r\n\tAD" +
+      "VENTURE\020\003B\'\n\023com.yourgamecompanyB\020VideoG" +
+      "ameCompany"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3137,7 +3238,7 @@ public final class VideoGameCompany {
     internal_static_com_yourgamecompany_VideoGame_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_yourgamecompany_VideoGame_descriptor,
-        new java.lang.String[] { "Name", "GameType", "PurchaseDate", "GameHistory", });
+        new java.lang.String[] { "Name", "GameType", "PurchaseDate", "GameHistory", "IsFavorite", });
     internal_static_com_yourgamecompany_VideoGame_History_descriptor =
       internal_static_com_yourgamecompany_VideoGame_descriptor.getNestedTypes().get(0);
     internal_static_com_yourgamecompany_VideoGame_History_fieldAccessorTable = new

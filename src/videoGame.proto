@@ -16,6 +16,7 @@ message VideoGame {
   optional EnumGameType gameType = 2;
   required SimpleDate purchaseDate = 3;
   repeated History gameHistory = 4;
+  optional bool isFavorite = 5;
 
   enum EnumGameType {
     GENERIC = 1;
